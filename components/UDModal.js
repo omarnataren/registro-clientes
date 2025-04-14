@@ -58,8 +58,8 @@ const UDModal = ({ id, visible, onClose, refresh }) => {
         onRequestClose={onClose}>
             <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)',}}>
                 <View style={styles.card}>
-                    <View style={{ justifyContent: 'center', alignItems: 'center', position: 'relative', paddingVertical: 10 }}>
-                        <Text style={{ fontSize: 30, color: '#1C1C1E', fontWeight:'bold' }}>Options</Text>
+                    <View style={styles.headerCard }>
+                        <Text style={{ fontSize: 25, color: '#1C1C1E', fontWeight:'bold' }}>Options</Text>
                         <TouchableOpacity onPress={onClose} style={{ position: 'absolute', right: 5, top: 5 }}>
                             <View style={styles.closeButton}> 
                                 <Text style={{ bottom: 1, fontSize: 20 }}>x</Text>
@@ -67,27 +67,19 @@ const UDModal = ({ id, visible, onClose, refresh }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={{ marginVertical: 15, marginHorizontal: 15}}>
-                        <Text style={{ fontSize: 20, color: '#1C1C1E', marginBottom: 10,  }}>Change stage:</Text>
-                        <View style={{
-                            borderWidth: 1, borderColor: '#ccc', borderRadius: 8, overflow: 'hidden', backgroundColor: '#F9F9F9',
-                        }}>
-                        <Picker
-                            selectedValue={etapa}
-                            onValueChange={(itemValue) => setEtapa(itemValue)}
-                            style={{
-                            height: 50, 
-                            width: '100%',
-                            color: '#FFF', 
-                            marginBottom:125,
-                            marginTop:-40,
-                            }}
-                            dropdownIconColor="#1C1C1E"
-                        >
-                            <Picker.Item label="New contact" value="New contact" color="#1C1C1E" />
-                            <Picker.Item label="In Follow-Up" value="In Follow-Up" color="#1C1C1E" />
-                            <Picker.Item label="Closed" value="Closed" color="#1C1C1E" />
-                            <Picker.Item label="Lost" value="Lost" color="#1C1C1E" />
-                        </Picker>
+                        <Text style={{ fontSize: 18, color: '#1C1C1E', marginBottom: 10,  }}>Change stage:</Text>
+                        <View style={styles.pickerView}>
+                            <Picker
+                                selectedValue={etapa}
+                                onValueChange={(itemValue) => setEtapa(itemValue)}
+                                style={{ height: 50, width: '100%', color: '#FFF', marginBottom:125, marginTop:-40 }}
+                                dropdownIconColor="#1C1C1E"
+                            >
+                                <Picker.Item label="New contact" value="New contact" color="#1C1C1E" />
+                                <Picker.Item label="In Follow-Up" value="In Follow-Up" color="#1C1C1E" />
+                                <Picker.Item label="Closed" value="Closed" color="#1C1C1E" />
+                                <Picker.Item label="Lost" value="Lost" color="#1C1C1E" />
+                            </Picker>
                         </View>
                     </View>
                     <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 20}}>
@@ -117,6 +109,12 @@ const styles = StyleSheet.create({
         borderRadius:24, 
         padding: 10
     },
+    headerCard:{
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        position: 'relative', 
+        paddingVertical: 10
+    },
     closeButton:{
         width:30, 
         height:30, 
@@ -126,6 +124,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',  
         alignSelf: 'flex-end'
     },
+    pickerView:{
+        borderWidth: 1, 
+        borderColor: '#ccc', 
+        borderRadius: 8, 
+        overflow: 'hidden', 
+        backgroundColor: '#F9F9F9',
+    },
     button: {
         padding:15,
         width:110,
@@ -133,4 +138,5 @@ const styles = StyleSheet.create({
         borderRadius: 15,
     }
 })
+
 export default UDModal;
